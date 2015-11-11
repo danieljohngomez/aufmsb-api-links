@@ -1,3 +1,46 @@
+//These are parser/scraping functions and objects tied to SchoolBliz
+//Notes: DO NOT edit function names, for they are statically tied to the apps.
+//       Increment API Version from version.html when changes are made.
+//       Only edit when necessary.
+
+//by Daniel John Gomez, djgomez23@gmail.com
+
+var links = [
+    {
+        "name": "login",
+        "url": "http://sblive.auf.edu.ph:8080/schoolbliz/commfile/login.jsp"
+    },
+    {
+        "name": "change_password",
+        "url": "http://sblive.auf.edu.ph:8080/schoolbliz/my_home/change_password.jsp"
+    },
+    {
+        "name": "main_links",
+        "url": "http://sblive.auf.edu.ph:8080/schoolbliz/PARENTS_STUDENTS/main_files/parents_students_main_links.jsp"
+    },
+    {
+        "name": "gradebook",
+        "url": "http://sblive.auf.edu.ph:8080/schoolbliz/PARENTS_STUDENTS/acad_performance/grade_release.jsp"
+    },
+    {
+        "name": "forgot_password",
+        "url": "http://sbpass.auf.edu.ph/test.php"
+    },
+    {
+        "name": "accounts",
+        "url": "http://sblive.auf.edu.ph:8080/schoolbliz/PARENTS_STUDENTS/accounts/student_ledger.jsp"
+    },
+    {
+        "name": "notify",
+        "url": "http://sbdashboard.auf.edu.ph/notify.php"
+    }
+];
+
+function getLinks(){
+    return JSON.stringify(links);
+}
+
+
 //data coming from login url
 function getLoginResult(responseBody) {
     if (responseBody.indexOf("not exist") > -1) {
