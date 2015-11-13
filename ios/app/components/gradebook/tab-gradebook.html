@@ -1,0 +1,60 @@
+<!--<a class="padding-left positive ion-ios-checkmark"></a>-->
+<ion-view view-title="Gradebook">
+    <ion-content>
+        <ion-refresher
+                pulling-text="Pull to refresh..."
+                on-refresh="requestGrades()"
+                spinner="none">
+        </ion-refresher>
+        <ion-item type="item-text-wrap" ng-click="openGradeQueryModal()">
+            <div class="row">
+                <div class="col col-75 padding-right">
+                    <h2 style="font-size: 1.3em; font-weight: 500;" class="positive">{{term}}, {{semester}}</h2>
+
+                    <p>A.Y {{syFrom}}-{{syTo}}</p>
+                </div>
+                <div class="col" style=" min-width: 45%" ng-show="gwa">
+                    <h2 style="font-size: 1.3em; font-weight: 500;" class="positive">{{gwa}}</h2>
+                    <p>GWA</p>
+                </div>
+            </div>
+        </ion-item>
+
+        <ion-list>
+            <div class="center padding-top" ng-show="isLoading">
+                <ion-spinner></ion-spinner>
+            </div>
+            <div class="center padding-top" ng-show="hasMessage">
+                <h3>{{message}}</h3>
+            </div>
+            <!-- Used for first item in the list, removes the border-->
+            <ion-item ng-show="!isLoading && !hasMessage" style="border-color:#FFF" ng-repeat-start="grade in grades" ng-if="$first"
+                      type="item-text-wrap">
+                <div class="row">
+                    <div class="col col-75 padding-right">
+                        <h2>{{grade.code}}</h2>
+
+                        <p>{{grade.name}}</p>
+                    </div>
+                    <div class="col" style=" min-width: 50%">
+                        <h1 style="font-size: 1.8em;" class="positive">{{grade.grade}}</h1>
+                    </div>
+                </div>
+            </ion-item>
+
+            <!-- Used for all items in the list except the first, with border-->
+            <ion-item ng-show="!isLoading && !hasMessage" ng-repeat-end ng-if="!$first" type="item-text-wrap">
+                <div class="row">
+                    <div class="col col-75 padding-right">
+                        <h2>{{grade.code}}</h2>
+
+                        <p>{{grade.name}}</p>
+                    </div>
+                    <div class="col" style=" min-width: 50%">
+                        <h1 style="font-size: 1.8em;" class="positive">{{grade.grade}}</h1>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

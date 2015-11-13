@@ -1,0 +1,59 @@
+<ion-modal-view ng-controller="GradeQueryCtrl">
+    <ion-content class="ion-content">
+        <div class="card">
+            <div class="item item-divider positive" style="background-color: #387ef5; color: #FFFFFF;">
+                Term
+            </div>
+            <div class="list">
+                <label ng-repeat="t in terms" class="item item-radio">
+                    <input type="radio" name="term" ng-model="$parent.term" ng-value="t">
+                    <div class="item-content">
+                        {{t}}
+                    </div>
+                    <i class="radio-icon ion-ios-checkmark positive center"></i>
+                </label>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="item item-divider positive" style="background-color: #387ef5; color: #FFFFFF;">
+                Semester
+            </div>
+            <div class="list">
+                <label ng-repeat="s in semesters" class="item item-radio">
+                    <input type="radio" name="semester" ng-model="$parent.semester" ng-value="s">
+                    <div class="item-content">
+                        {{s}}
+                    </div>
+                    <i class="radio-icon ion-ios-checkmark positive center"></i>
+                </label>
+            </div>
+        </div>
+        <div class="card">
+            <div class="item item-divider positive" style="background-color: #387ef5; color: #FFFFFF;">
+                Year
+            </div>
+            <ion-item>
+                <div class="item-icon-left" ng-click="decrementYear()">
+                    <i class="icon ion-ios-arrow-down"></i>
+                </div>
+                <p class="center">{{syFrom}}</p>
+
+                <div class="item-icon-right" ng-click="incrementYear()">
+                    <i class="icon ion-ios-arrow-up"></i>
+                </div>
+            </ion-item>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="col button button-positive" ng-click="closeGradeQueryModal()">Cancel</button>
+            </div>
+            <div class="col">
+                <button class="col button button-positive action-button" ng-click="requestGrades(term, semester, syFrom)">
+                    Search
+                </button>
+            </div>
+        </div>
+    </ion-content>
+
+</ion-modal-view>

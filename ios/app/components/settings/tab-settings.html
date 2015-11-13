@@ -1,0 +1,21 @@
+<ion-view view-title="Settings">
+    <ion-content cac>
+        <ion-list>
+            <ion-toggle ng-model="model.status" ng-change="change()"
+                        ng-true-value="'ON'" ng-false-value="'OFF'"
+                        toggle-class="toggle-positive">
+                <h2>Email Notifications</h2>
+                <p>{{model.email}}</p>
+            </ion-toggle>
+        </ion-list>
+        <ion-item>
+            Feedback
+        </ion-item>
+        <ion-item>
+            About
+        </ion-item>
+        <ion-item ng-click="signOut()">
+            Sign Out
+        </ion-item>
+    </ion-content>
+</ion-view>
